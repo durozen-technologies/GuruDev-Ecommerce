@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-surface: #fff8f6;
+  --color-surface-dim: #fbd1bf;
+  --color-surface-bright: #fff8f6;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #fff1eb;
+  --color-surface-container: #ffeae1;
+  --color-surface-container-high: #ffe2d7;
+  --color-surface-container-highest: #ffdbcc;
+  --color-on-surface: #2c160b;
+  --color-on-surface-variant: #59413e;
+  --color-inverse-surface: #432a1f;
+  --color-inverse-on-surface: #ffede6;
+  --color-outline: #8d706d;
+  --color-outline-variant: #e1bfbb;
+  --color-primary: #780009;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #9b1b1b;
+  --color-on-primary-container: #ffaca3;
+  --color-secondary: #715c00;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #feda57;
+  --color-on-secondary-container: #745f00;
+  --color-tertiary: #194010;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #305825;
+  --color-on-tertiary-container: #9fcd8d;
+  --color-error: #ba1a1a;
+  --color-on-error: #ffffff;
+  
+  --font-display-lg: "Libre Caslon Text", serif;
+  --font-headline-lg: "Libre Caslon Text", serif;
+  --font-headline-md: "Libre Caslon Text", serif;
+  --font-body-lg: "Plus Jakarta Sans", sans-serif;
+  --font-body-md: "Plus Jakarta Sans", sans-serif;
+  --font-label-md: "Plus Jakarta Sans", sans-serif;
+  --font-caption: "Plus Jakarta Sans", sans-serif;
+
+  --spacing-base: 8px;
+  --spacing-xs: 4px;
+  --spacing-sm: 12px;
+  --spacing-md: 24px;
+  --spacing-lg: 48px;
+  --spacing-xl: 80px;
+  
+  --radius-sm: 0.125rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-surface text-on-surface font-body-md antialiased;
+}
+
+@utility glass {
+  @apply bg-surface/70 backdrop-blur-md border border-outline-variant/30 shadow-sm;
+}
+
+@utility glass-dark {
+  @apply bg-inverse-surface/80 text-inverse-on-surface backdrop-blur-lg border border-outline-variant/10 shadow-xl;
+}
+
+.kolam-bg {
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10,10 Q50,90 90,10' stroke='rgba(113, 92, 0, 0.05)' fill='none' stroke-width='2'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-outline-variant rounded-full;
+}
