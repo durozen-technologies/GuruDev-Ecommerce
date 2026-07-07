@@ -130,3 +130,15 @@
 - **User Request**: `"Achu Muruku (Karam) Spicy in the first place"`
 - **Actions Taken**:
   - Moved the `achu-muruku-karam` product entry to the very top of the `products` array in `src/data.ts` so it renders first in the shop grid.
+
+### [2026-07-06 14:27:00] Initial Git Push
+- **User Request**: `"https://github.com/durozen-technologies/GuruDev-Ecommerce.git push the code"`
+- **Actions Taken**:
+  - Initialized local git repository.
+  - Staged and committed all files.
+  - Linked and successfully pushed all code to the `main` branch of the provided GitHub remote URL.
+
+### [2026-07-07 11:46:00] Change Browser Tab Title
+- **User Request**: `"in the tab name change to the google"`
+- **Actions Taken**:
+  - Updated `index.html` to set `<title>Gurudev Impex</title>` instead of the default placeholder.
