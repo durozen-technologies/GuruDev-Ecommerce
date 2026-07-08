@@ -1,8 +1,11 @@
 import { X } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
 import { useAppContext } from '../context/AppContext';
 
 export default function MobileMenu() {
-  const { view, setView, mobileMenuOpen, setMobileMenuOpen } = useAppContext();
+  const { mobileMenuOpen, setMobileMenuOpen } = useAppContext();
+  const location = useLocation();
+  const path = location.pathname;
 
   return (
     <>
@@ -30,30 +33,34 @@ export default function MobileMenu() {
           </button>
         </div>
         <div className="flex flex-col p-md gap-md">
-          <button 
-            onClick={() => { setView('home'); setMobileMenuOpen(false); }}
-            className={`text-left font-label-lg uppercase tracking-wider p-sm rounded-lg transition-colors ${view === 'home' ? 'bg-primary-container text-on-primary-container font-bold' : 'text-on-surface hover:bg-surface-container'}`}
+          <Link 
+            to="/"
+            onClick={() => setMobileMenuOpen(false)}
+            className={`text-left font-label-lg uppercase tracking-wider p-sm rounded-lg transition-colors block ${path === '/' ? 'bg-primary-container text-on-primary-container font-bold' : 'text-on-surface hover:bg-surface-container'}`}
           >
             Home
-          </button>
-          <button 
-            onClick={() => { setView('shop'); setMobileMenuOpen(false); }}
-            className={`text-left font-label-lg uppercase tracking-wider p-sm rounded-lg transition-colors ${view === 'shop' || view === 'product' ? 'bg-primary-container text-on-primary-container font-bold' : 'text-on-surface hover:bg-surface-container'}`}
+          </Link>
+          <Link 
+            to="/shop"
+            onClick={() => setMobileMenuOpen(false)}
+            className={`text-left font-label-lg uppercase tracking-wider p-sm rounded-lg transition-colors block ${path.startsWith('/shop') || path.startsWith('/product') ? 'bg-primary-container text-on-primary-container font-bold' : 'text-on-surface hover:bg-surface-container'}`}
           >
             Shop
-          </button>
-          <button 
-            onClick={() => { setView('about'); setMobileMenuOpen(false); }}
-            className={`text-left font-label-lg uppercase tracking-wider p-sm rounded-lg transition-colors ${view === 'about' ? 'bg-primary-container text-on-primary-container font-bold' : 'text-on-surface hover:bg-surface-container'}`}
+          </Link>
+          <Link 
+            to="/about"
+            onClick={() => setMobileMenuOpen(false)}
+            className={`text-left font-label-lg uppercase tracking-wider p-sm rounded-lg transition-colors block ${path === '/about' ? 'bg-primary-container text-on-primary-container font-bold' : 'text-on-surface hover:bg-surface-container'}`}
           >
             Our Story
-          </button>
-          <button 
-            onClick={() => { setView('contact'); setMobileMenuOpen(false); }}
-            className={`text-left font-label-lg uppercase tracking-wider p-sm rounded-lg transition-colors ${view === 'contact' ? 'bg-primary-container text-on-primary-container font-bold' : 'text-on-surface hover:bg-surface-container'}`}
+          </Link>
+          <Link 
+            to="/contact"
+            onClick={() => setMobileMenuOpen(false)}
+            className={`text-left font-label-lg uppercase tracking-wider p-sm rounded-lg transition-colors block ${path === '/contact' ? 'bg-primary-container text-on-primary-container font-bold' : 'text-on-surface hover:bg-surface-container'}`}
           >
             Contact
-          </button>
+          </Link>
         </div>
       </div>
     </>

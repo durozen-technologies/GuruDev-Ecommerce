@@ -1,11 +1,13 @@
-import { ShoppingCart, User, Menu, Search, X } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
-import React, { useState } from 'react';
-import { createPortal } from 'react-dom';
+import { ShoppingCart, User, Menu } from 'lucide-react';
+import { motion } from 'motion/react';
+import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { useAppContext } from '../context/AppContext';
 
 export default function Navbar() {
-  const { view, setView, setCartOpen, cartItems, setMobileMenuOpen } = useAppContext();
+  const { setCartOpen, cartItems, setMobileMenuOpen } = useAppContext();
+  const location = useLocation();
+  const path = location.pathname;
   
   const totalItems = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
@@ -18,44 +20,42 @@ export default function Navbar() {
       className="glass sticky top-0 z-40 w-full"
     >
       <div className="flex justify-between items-center w-full px-md md:px-lg py-sm max-w-[80rem] mx-auto">
-        <button 
-          onClick={() => setView('home')}
-          className="font-headline-md text-[24px] font-bold text-primary tracking-tight outline-none"
+        <Link 
+          to="/"
+          className="font-headline-md text-[24px] font-bold text-primary tracking-tight outline-none block"
         >
           GURUDEV IMPEX
-        </button>
+        </Link>
 
         <div className="hidden md:flex items-center gap-lg">
-          <button 
-            onClick={() => setView('home')}
-            className={`font-label-md uppercase tracking-wider transition-colors ${view === 'home' ? 'text-primary font-bold border-b-2 border-primary' : 'text-on-surface-variant hover:text-primary'}`}
+          <Link 
+            to="/"
+            className={`font-label-md uppercase tracking-wider transition-colors block ${path === '/' ? 'text-primary font-bold border-b-2 border-primary' : 'text-on-surface-variant hover:text-primary'}`}
           >
             Home
-          </button>
-          <button 
-            onClick={() => setView('shop')}
-            className={`font-label-md uppercase tracking-wider transition-colors ${view === 'shop' || view === 'product' ? 'text-primary font-bold border-b-2 border-primary' : 'text-on-surface-variant hover:text-primary'}`}
+          </Link>
+          <Link 
+            to="/shop"
+            className={`font-label-md uppercase tracking-wider transition-colors block ${path.startsWith('/shop') || path.startsWith('/product') ? 'text-primary font-bold border-b-2 border-primary' : 'text-on-surface-variant hover:text-primary'}`}
           >
             Shop
-          </button>
-          <button 
-            onClick={() => setView('about')}
-            className={`font-label-md uppercase tracking-wider transition-colors ${view === 'about' ? 'text-primary font-bold border-b-2 border-primary' : 'text-on-surface-variant hover:text-primary'}`}
+          </Link>
+          <Link 
+            to="/about"
+            className={`font-label-md uppercase tracking-wider transition-colors block ${path === '/about' ? 'text-primary font-bold border-b-2 border-primary' : 'text-on-surface-variant hover:text-primary'}`}
           >
             Our Story
-          </button>
-          <button 
-            onClick={() => setView('contact')}
-            className={`font-label-md uppercase tracking-wider transition-colors ${view === 'contact' ? 'text-primary font-bold border-b-2 border-primary' : 'text-on-surface-variant hover:text-primary'}`}
+          </Link>
+          <Link 
+            to="/contact"
+            className={`font-label-md uppercase tracking-wider transition-colors block ${path === '/contact' ? 'text-primary font-bold border-b-2 border-primary' : 'text-on-surface-variant hover:text-primary'}`}
           >
             Contact
-          </button>
+          </Link>
         </div>
 
         <div className="flex items-center gap-sm md:gap-md text-primary">
-          <button className="p-xs hover:bg-surface-container rounded-full transition-colors hidden md:block">
-            <Search size={20} />
-          </button>
+
           <button 
             onClick={() => setCartOpen(true)}
             className="p-xs hover:bg-surface-container rounded-full transition-colors relative"

@@ -141,4 +141,118 @@
 ### [2026-07-07 11:46:00] Change Browser Tab Title
 - **User Request**: `"in the tab name change to the google"`
 - **Actions Taken**:
-  - Updated `index.html` to set `<title>Gurudev Impex</title>` instead of the default placeholder.
+  - Updated `index.html` to set `<title>Gurudev Impex Shop</title>` instead of the default placeholder.
+
+### [2026-07-07 11:47:00] Git Push Title Change
+- **User Request**: `"push"`
+- **Actions Taken**:
+  - Staged, committed, and pushed the `index.html` changes to the GitHub repository's `main` branch.
+### [2026-07-07 11:49:00] Frontend Routing Polish
+- **User Request**: `"check the full frontend button redirect alllignment to exact location in all the paged"` (Approved implementation plan)
+- **Actions Taken**:
+  - Audited all frontend routes using `grep_search`.
+  - Wrapped the `GURUDEV IMPEX` footer text with a `setView('home')` redirect in `src/components/Footer.tsx`.
+  - Updated the breadcrumb path label from "Spices" to "Shop" in `src/views/ProductView.tsx`.
+
+### [2026-07-07 11:55:00] Fix SPA Scroll Restoration
+- **User Request**: `"i mean if i click in the it dose not direct to top of the page or to the correct page"` (Noticed views were maintaining scroll position instead of snapping to top).
+- **Actions Taken**:
+  - Added a `useEffect` in `src/App.tsx` that calls `window.scrollTo(0, 0)` whenever the `view` state changes, ensuring every page navigation starts at the very top.
+### [2026-07-07 12:05:00] React Router Migration
+- **User Request**: `"why the forward and the bac button is not working in the website?"` (Approved implementation plan)
+- **Actions Taken**:
+  - Installed `react-router-dom`.
+  - Refactored `AppContext.tsx` to remove the custom `view` state logic.
+  - Rewrote `App.tsx` with `<BrowserRouter>` and `<Routes>`, and attached the scroll-to-top logic to the router's `useLocation()`.
+  - Updated `Navbar.tsx`, `MobileMenu.tsx`, and `Footer.tsx` to use `<Link>` components for SEO and middle-click support.
+  - Refactored all views (`HomeView`, `ShopView`, `ProductView`, etc.) to use `useNavigate()` and `useParams()` instead of `setView()`.
+
+### [2026-07-07 12:12:00] Robust Scroll Restoration Fix
+- **User Request**: `"in some pages the page scrool not alligned when clicking the products"` (Approved implementation plan)
+- **Actions Taken**:
+### [2026-07-07 12:40:00] Accessibility & SEO Polish
+- **User Request**: `"chall the pages and the buton if something is not working check"` (Approved QA audit and Accessibility polish plan)
+- **Actions Taken**:
+  - Replaced internal `<button onClick={() => navigate(...)}>` CTA buttons with semantic `<Link to="...">` tags in `HomeView.tsx`, `AboutView.tsx`, `ProductView.tsx` (breadcrumbs & fallback), and `CheckoutView.tsx`.
+  - Maintained identical visual styling while enabling middle-click/new-tab behavior and improving search engine crawlability.
+
+### [2026-07-08 14:48:00] Product Image Update
+- **User Request**: `"update the proguct image and rename the image with the product name"`
+- **Actions Taken**:
+  - Identified `image.png` as the "Health Mix" product image based on its contents.
+  - Moved and renamed `D:\GuruDev E-Commerce\image.png` to `D:\GuruDev E-Commerce\public\images\products\health-mix.png`.
+  - Updated the image path for "Health Mix" in `src/data.ts` to point to the new `.png` file.
+### [2026-07-08 14:51:00] Product Image Update (Rasam Powder)
+- **User Request**: `"update the proguct image and rename the image with the product name"`
+- **Actions Taken**:
+  - Identified `image.png` as the "Rasam Powder" product image based on its contents.
+  - Moved and renamed `D:\GuruDev E-Commerce\image.png` to `D:\GuruDev E-Commerce\public\images\products\rasam-powder.png`.
+  - Updated the image path for "Rasam Powder" in `src/data.ts` to point to the new `.png` file.
+  - Cleaned up the old `health-mix.jpg` and `rasam-powder.jpg` images from the directory.
+
+### [2026-07-08 14:54:00] Product Image Update (Puliyodharai Podi)
+- **User Request**: `"update the proguct image and rename the image with the product"`
+- **Actions Taken**:
+  - Identified `image.png` as the "Puliyodharai Podi" product image based on its contents.
+  - Moved and renamed `D:\GuruDev E-Commerce\image.png` to `D:\GuruDev E-Commerce\public\images\products\puliyodharai-podi.png`.
+  - Updated the image path for "Puliyodharai Podi" in `src/data.ts` to point to the new `.png` file.
+  - Cleaned up the old `puliyodharai-podi.jpg` image.
+
+### [2026-07-08 14:55:00] Product Image Update (Murungai Podi)
+- **User Request**: `"update the proguct image and rename the image with the product"`
+- **Actions Taken**:
+  - Identified `image.png` as the "Murungai Podi" product image based on its contents.
+  - Moved and renamed `D:\GuruDev E-Commerce\image.png` to `D:\GuruDev E-Commerce\public\images\products\murungai-podi.png`.
+  - Updated the image path for "Murungai Podi" in `src/data.ts` to point to the new `.png` file.
+  - Cleaned up the old `murungai-podi.jpg` image.
+
+### [2026-07-08 14:57:00] Product Image Update (Idly Milakaipodi)
+- **User Request**: `"update the proguct image and rename the image with the product"`
+- **Actions Taken**:
+  - Identified `image.png` as the "Idly Milakaipodi" product image based on its contents.
+  - Moved and renamed `D:\GuruDev E-Commerce\image.png` to `D:\GuruDev E-Commerce\public\images\products\idly-milakaipodi.png`.
+  - Updated the image path for "Idly Milakaipodi" in `src/data.ts` to point to the new `.png` file.
+  - Cleaned up the old `idly-milakaipodi.jpg` image.
+
+### [2026-07-08 14:59:00] Product Image Update (Vathakuzhambu Podi)
+- **User Request**: `"update the proguct image and rename the image with the product"`
+- **Actions Taken**:
+  - Identified `image copy.png` as the "Vathakuzhambu Podi" product image based on its contents.
+  - Moved and renamed `D:\GuruDev E-Commerce\image copy.png` to `D:\GuruDev E-Commerce\public\images\products\vathakuzhambu-podi.png`.
+  - Updated the image path for "Vathakuzhambu Podi" in `src/data.ts` to point to the new `.png` file.
+  - Cleaned up the old `vathakuzhambu-podi.jpg` image.
+
+### [2026-07-08 15:02:00] Product Image Update (Karamathu Podi)
+- **User Request**: `"update the proguct image and rename the image with the produ"`
+- **Actions Taken**:
+  - Identified `image.png` as the "Karamathu Podi" product image based on its contents.
+  - Moved and renamed `D:\GuruDev E-Commerce\image.png` to `D:\GuruDev E-Commerce\public\images\products\karamathu-podi.png`.
+  - Updated the image path for "Karamathu Podi" in `src/data.ts` to point to the new `.png` file.
+  - Cleaned up the old `karamathu-podi.jpg` image.
+
+### [2026-07-08 15:04:00] Product Image Update (Angayapodi)
+- **User Request**: `"update the proguct image and rename the image with the produ"`
+- **Actions Taken**:
+  - Identified `image.png` as the "Angayapodi" product image based on its contents.
+  - Moved and renamed `D:\GuruDev E-Commerce\image.png` to `D:\GuruDev E-Commerce\public\images\products\angayapodi.png`.
+  - Updated the image path for "Angayapodi" in `src/data.ts` to point to the new `.png` file.
+  - Cleaned up the old `angayapodi.jpg` image.
+
+### [2026-07-08 15:07:00] Product Image Update (Ellu Milakai Podi)
+- **User Request**: `"update the proguct image and rename the image with the produ"`
+- **Actions Taken**:
+  - Identified `image.png` as the "Ellu Milakai Podi" product image based on its contents.
+  - Moved and renamed `D:\GuruDev E-Commerce\image.png` to `D:\GuruDev E-Commerce\public\images\products\ellu-milakai-podi.png`.
+  - Updated the image path for "Ellu Milakai Podi" in `src/data.ts` to point to the new `.png` file.
+  - Cleaned up the old `ellu-milakai-podi.jpg` image.
+
+### [2026-07-08 15:11:00] UI Tweaks
+- **User Request**: `"remove the search button in the header ."` and `"in see in the there is an lot of gap between the header and the Authentic Blends"` (and mobile view gap)
+- **Actions Taken**:
+  - Removed the `Search` icon import and the corresponding button from `src/components/Navbar.tsx`.
+  - Replaced the large top padding `py-xl` with a more balanced `pt-sm pb-lg md:pt-md md:pb-xl` in `ShopView.tsx`, `ProductView.tsx`, `HomeView.tsx`, `TrackOrderView.tsx`, `AboutView.tsx`, and `ContactView.tsx` to fix the large gap beneath the header.
+  - Adjusted the mobile `flex-col` gap from `gap-xl` (80px) to `gap-md md:gap-xl` (24px) in `ShopView.tsx`, `ProductView.tsx`, `ContactView.tsx`, `HomeView.tsx`, and `CheckoutView.tsx` so stacked mobile components don't have massive vertical separation.
+  - Fixed an overlapping bug on the mobile Product Details page by changing `top-24` to `md:top-24`, preventing the image gallery from visually shifting down over the product title.
+  - Removed the hardcoded secondary thumbnail image and thumbnail gallery from `ProductView.tsx` as it was no longer needed for single-image products.
+  - Reduced excessive padding (`p-2xl` -> `p-xl`) and vertical spacing (`space-y-xl` -> `space-y-lg`) in `CheckoutView.tsx` to tighten the form and order summary layout.
+  - Applied `/frontend-ui-engineering` standards to `CheckoutView.tsx` by further tightening the layout: replaced oversized `p-xl` with `p-lg`, removed generic oversized `space-y-lg` for `space-y-md`, and reduced input gaps to `gap-3` and `mb-3` to create a professional, cohesive hierarchy without the generic "AI aesthetic" of excessive whitespace.

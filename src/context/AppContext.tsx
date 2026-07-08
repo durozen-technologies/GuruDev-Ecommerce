@@ -1,13 +1,7 @@
 import { createContext, useContext, useState, useMemo, ReactNode } from 'react';
 import { Product, CartItem } from '../types';
 
-export type ViewType = 'home' | 'shop' | 'product' | 'about' | 'contact' | 'track' | 'checkout';
-
 interface AppContextType {
-  view: ViewType;
-  setView: (view: ViewType) => void;
-  currentProduct: Product | null;
-  setCurrentProduct: (product: Product | null) => void;
   cartOpen: boolean;
   setCartOpen: (open: boolean) => void;
   cartItems: CartItem[];
@@ -22,8 +16,6 @@ interface AppContextType {
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export function AppProvider({ children }: { children: ReactNode }) {
-  const [view, setView] = useState<ViewType>('home');
-  const [currentProduct, setCurrentProduct] = useState<Product | null>(null);
   const [cartOpen, setCartOpen] = useState(false);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -69,10 +61,6 @@ export function AppProvider({ children }: { children: ReactNode }) {
   return (
     <AppContext.Provider
       value={{
-        view,
-        setView,
-        currentProduct,
-        setCurrentProduct,
         cartOpen,
         setCartOpen,
         cartItems,

@@ -6,7 +6,7 @@ export default function ContactView() {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   return (
-    <div className="w-full max-w-[80rem] mx-auto px-md md:px-lg py-xl flex flex-col md:flex-row gap-xl">
+    <div className="w-full max-w-[80rem] mx-auto px-md md:px-lg pt-sm pb-lg md:pt-md md:pb-xl flex flex-col md:flex-row gap-lg md:gap-xl">
       <motion.div 
         initial={{ opacity: 0, x: -30 }}
         animate={{ opacity: 1, x: 0 }}

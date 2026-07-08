@@ -2,9 +2,9 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { Leaf, Award, Heart, ArrowRight } from 'lucide-react';
 import { useAppContext } from '../context/AppContext';
+import { Link } from 'react-router-dom';
 
 export default function AboutView() {
-  const { setView } = useAppContext();
 
   return (
     <div className="w-full relative">
@@ -27,7 +27,7 @@ export default function AboutView() {
       </section>
 
       {/* Content Grid */}
-      <section className="max-w-[80rem] mx-auto px-md md:px-lg py-xl">
+      <section className="max-w-[80rem] mx-auto px-md md:px-lg pt-sm pb-lg md:pt-md md:pb-xl">
         <div className="grid md:grid-cols-3 gap-lg md:gap-xl">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -91,13 +91,13 @@ export default function AboutView() {
           <p className="font-body-lg text-on-surface-variant max-w-[42rem] mx-auto mb-lg">
             Explore our curated selection of premium South Indian spices and podis.
           </p>
-          <button 
-            onClick={() => setView('shop')}
+          <Link 
+            to="/shop"
             className="bg-primary text-on-primary font-label-lg px-xl py-4 rounded-lg hover:bg-primary-container transition-all hover:-translate-y-1 shadow-lg inline-flex items-center gap-2 group uppercase tracking-wider"
           >
             Shop Our Spices
             <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-          </button>
+          </Link>
         </motion.div>
       </section>
     </div>

@@ -22,7 +22,7 @@ export default function ShopView() {
     });
   }, [selectedCategories]);
   return (
-    <div className="w-full max-w-[80rem] mx-auto px-md md:px-lg py-lg md:py-xl flex flex-col md:flex-row gap-xl kolam-bg">
+    <div className="w-full max-w-[80rem] mx-auto px-md md:px-lg pt-sm pb-lg md:pt-md md:pb-xl flex flex-col md:flex-row gap-md md:gap-xl kolam-bg">
       {/* Sidebar Filters */}
       <aside className="w-full md:w-64 flex-shrink-0 space-y-sm md:space-y-lg">
         {/* Mobile Filter Toggle */}

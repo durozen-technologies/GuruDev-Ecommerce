@@ -2,9 +2,14 @@ import React, { useState } from 'react';
 import { ChevronRight, ChevronDown, Minus, Plus, ShoppingBag, ShieldCheck, Factory } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useAppContext } from '../context/AppContext';
+import { useParams, useNavigate, Link } from 'react-router-dom';
+import { products } from '../data';
 
 export default function ProductView() {
-  const { currentProduct, setView, addToCart } = useAppContext();
+  const { productId } = useParams();
+  const navigate = useNavigate();
+  const currentProduct = products.find(p => p.id === productId);
+  const { addToCart } = useAppContext();
   const [quantity, setQuantity] = useState(1);
   const [activeAccordion, setActiveAccordion] = useState<string | null>('ingredients');
 
@@ -12,7 +17,7 @@ export default function ProductView() {
     return (
       <div className="p-xl text-center">
         <p>Product not found.</p>
-        <button onClick={() => setView('shop')} className="text-primary underline mt-4">Return to Shop</button>
+        <Link to="/shop" className="text-primary underline mt-4 inline-block">Return to Shop</Link>
       </div>
     );
   }
@@ -22,21 +27,21 @@ export default function ProductView() {
   };
 
   return (
-    <div className="max-w-[80rem] mx-auto px-md md:px-lg py-lg md:py-xl kolam-bg w-full">
+    <div className="max-w-[80rem] mx-auto px-md md:px-lg pt-sm pb-lg md:pt-md md:pb-xl kolam-bg w-full">
       {/* Breadcrumb */}
       <nav aria-label="Breadcrumb" className="flex text-on-surface-variant font-caption mb-md">
         <ol className="inline-flex items-center space-x-1 md:space-x-2">
-          <li><button onClick={() => setView('home')} className="hover:text-primary transition-colors">Home</button></li>
+          <li><Link to="/" className="hover:text-primary transition-colors">Home</Link></li>
           <li><ChevronRight size={14} className="mx-1" /></li>
-          <li><button onClick={() => setView('shop')} className="hover:text-primary transition-colors">Spices</button></li>
+          <li><Link to="/shop" className="hover:text-primary transition-colors">Shop</Link></li>
           <li><ChevronRight size={14} className="mx-1" /></li>
           <li aria-current="page"><span className="text-on-surface font-medium">{currentProduct.name}</span></li>
         </ol>
       </nav>
 
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-xl">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-md md:gap-xl">
         {/* Gallery */}
-        <div className="md:col-span-7 space-y-md relative md:sticky top-24 h-fit z-10">
+        <div className="md:col-span-7 space-y-md relative md:sticky md:top-24 h-fit z-10">
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -55,14 +60,7 @@ export default function ProductView() {
               </div>
             )}
           </motion.div>
-          <div className="grid grid-cols-4 gap-sm">
-            <button className="bg-surface rounded-lg border-2 border-primary overflow-hidden h-24 p-2">
-              <img src={currentProduct.image} className="w-full h-full object-contain" alt="Thumbnail" />
-            </button>
-            <button className="bg-surface rounded-lg border border-outline-variant/30 opacity-70 hover:opacity-100 transition-opacity overflow-hidden h-24">
-              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuArNYHUcSLjJ5I5m5vNkpOhome2UPOhn3UZj_yKdt7Y58vV9VVRYHxe5eGOggHJy5mL7DbzhdLh5BqEcFGU9CX9P66WM29ZVEPfxEaRxWZUhsHnxQd7Hwxd9iTN3V1-1uwNKVMs0TG6E61VPRXDAxyC6-byHoDkGH_Ju7nhKlyWy2HFWFnEggo8Zs5Yn-tUvnvrAQOPMGvKOeLVPTjs3eyDpESkTUrssdGwo2URrk5mi4A_K1PqkrH6JIoI7hKYmi3j3f-Uo405EPo" className="w-full h-full object-cover" alt="Spices" />
-            </button>
-          </div>
+
         </div>
 
         {/* Product Details */}

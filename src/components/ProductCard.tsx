@@ -3,13 +3,14 @@ import { ShoppingBag } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Product } from '../types';
 import { useAppContext } from '../context/AppContext';
+import { useNavigate } from 'react-router-dom';
 
 export default function ProductCard({ product }: { product: Product, key?: React.Key }) {
-  const { setView, setCurrentProduct, addToCart } = useAppContext();
+  const { addToCart } = useAppContext();
+  const navigate = useNavigate();
 
   const handleProductClick = () => {
-    setCurrentProduct(product);
-    setView('product');
+    navigate(`/product/${product.id}`);
   };
 
   const handleAddToCart = (e: React.MouseEvent) => {

@@ -3,9 +3,10 @@ import { motion } from 'motion/react';
 import { products } from '../data';
 import ProductCard from '../components/ProductCard';
 import { useAppContext } from '../context/AppContext';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function HomeView() {
-  const { setView } = useAppContext();
+  const navigate = useNavigate();
   const bestsellers = products.slice(0, 4);
 
   return (
@@ -22,7 +23,7 @@ export default function HomeView() {
           <div className="absolute inset-0 bg-gradient-to-r from-surface-container-highest/95 to-surface-container/50"></div>
         </div>
         
-        <div className="relative z-10 max-w-[80rem] mx-auto px-md md:px-lg py-xl grid md:grid-cols-2 gap-lg items-center w-full">
+        <div className="relative z-10 max-w-[80rem] mx-auto px-md md:px-lg pt-sm pb-lg md:pt-md md:pb-xl grid md:grid-cols-2 gap-lg items-center w-full">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -40,18 +41,18 @@ export default function HomeView() {
               Generational culinary heritage brought to your kitchen. Premium, artisanal spice blends crafted in Namakkal, Tamil Nadu.
             </p>
             <div className="flex flex-col sm:flex-row gap-sm pt-sm justify-center md:justify-start">
-              <button 
-                onClick={() => setView('shop')}
+              <Link 
+                to="/shop"
                 className="bg-primary text-on-primary font-label-md px-lg py-3 rounded hover:bg-primary-container transition-all hover:-translate-y-0.5 shadow-md uppercase tracking-wider"
               >
                 Shop Collections
-              </button>
-              <button 
-                onClick={() => setView('about')}
+              </Link>
+              <Link 
+                to="/about"
                 className="bg-transparent text-on-background border-2 border-outline font-label-md px-lg py-3 rounded hover:bg-surface-container-high transition-all uppercase tracking-wider"
               >
                 Our Heritage
-              </button>
+              </Link>
             </div>
           </motion.div>
         </div>
@@ -70,13 +71,13 @@ export default function HomeView() {
               <h2 className="font-headline-lg text-[32px] text-on-background">Our Bestsellers</h2>
               <p className="font-body-md text-on-surface-variant mt-2">Premium blends for everyday magic.</p>
             </div>
-            <button 
-              onClick={() => setView('shop')}
+            <Link 
+              to="/shop"
               className="hidden md:flex items-center text-primary font-label-md hover:underline group"
             >
               View All Spices 
               <ArrowRight size={18} className="ml-1 group-hover:translate-x-1 transition-transform" />
-            </button>
+            </Link>
           </motion.div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md md:gap-lg">
@@ -95,7 +96,7 @@ export default function HomeView() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
-            className="grid md:grid-cols-2 gap-xl items-center"
+            className="grid md:grid-cols-2 gap-lg md:gap-xl items-center"
           >
             <div className="relative rounded-lg overflow-hidden border border-outline-variant/30 shadow-lg bg-surface">
               <img 
@@ -136,13 +137,13 @@ export default function HomeView() {
               </div>
               
               <div className="pt-lg">
-                <button 
-                  onClick={() => setView('about')}
+                <Link 
+                  to="/about"
                   className="bg-surface border-2 border-outline text-on-surface font-label-md px-lg py-3 rounded hover:bg-surface-container transition-colors inline-flex items-center gap-2 group uppercase tracking-wider"
                 >
                   Read Our Full Story
                   <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                </button>
+                </Link>
               </div>
             </div>
           </motion.div>

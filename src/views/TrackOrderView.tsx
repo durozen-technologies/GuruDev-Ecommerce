@@ -12,7 +12,7 @@ export default function TrackOrderView() {
   };
 
   return (
-    <div className="w-full max-w-[56rem] mx-auto px-md md:px-lg py-xl flex flex-col items-center">
+    <div className="w-full max-w-[56rem] mx-auto px-md md:px-lg pt-sm pb-lg md:pt-md md:pb-xl flex flex-col items-center">
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

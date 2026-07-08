@@ -1,9 +1,11 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { X, Minus, Plus } from 'lucide-react';
 import { useAppContext } from '../context/AppContext';
+import { useNavigate } from 'react-router-dom';
 
 export default function CartDrawer() {
-  const { cartOpen, setCartOpen, cartItems, updateQuantity, cartTotal, setView } = useAppContext();
+  const { cartOpen, setCartOpen, cartItems, updateQuantity, cartTotal } = useAppContext();
+  const navigate = useNavigate();
 
   return (
     <AnimatePresence>
@@ -100,7 +102,7 @@ export default function CartDrawer() {
                 <button 
                   disabled={cartItems.length === 0}
                   onClick={() => {
-                    setView('checkout');
+                    navigate('/checkout');
                     setCartOpen(false);
                   }}
                   className="w-full bg-primary text-on-primary font-label-md py-sm rounded-lg hover:bg-primary-container transition-colors shadow-md disabled:opacity-50 disabled:cursor-not-allowed uppercase tracking-wider"
