@@ -8,9 +8,12 @@ export interface Product {
   category: 'Masalas' | 'Snacks';
   spiceLevel: 'Mild' | 'Medium' | 'Hot';
   isBestseller?: boolean;
+  additionalImages?: string[];
 }
 
 export interface CartItem {
+  id: string;
   product: Product;
   quantity: number;
+  selectedWeight: string;
 }

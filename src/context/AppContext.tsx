@@ -5,9 +5,9 @@ interface AppContextType {
   cartOpen: boolean;
   setCartOpen: (open: boolean) => void;
   cartItems: CartItem[];
-  addToCart: (product: Product, quantity?: number) => void;
-  updateQuantity: (productId: string, quantity: number) => void;
-  removeFromCart: (productId: string) => void;
+  addToCart: (product: Product, quantity?: number, selectedWeight?: string) => void;
+  updateQuantity: (cartItemId: string, quantity: number) => void;
+  removeFromCart: (cartItemId: string) => void;
   cartTotal: number;
   mobileMenuOpen: boolean;
   setMobileMenuOpen: (open: boolean) => void;
@@ -20,35 +20,36 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const addToCart = (product: Product, quantity: number = 1) => {
+  const addToCart = (product: Product, quantity: number = 1, selectedWeight: string = product.weight) => {
+    const cartItemId = `${product.id}-${selectedWeight}`;
     setCartItems(items => {
-      const existing = items.find(item => item.product.id === product.id);
+      const existing = items.find(item => item.id === cartItemId);
       if (existing) {
         return items.map(item =>
-          item.product.id === product.id
+          item.id === cartItemId
             ? { ...item, quantity: item.quantity + quantity }
             : item
         );
       }
-      return [...items, { product, quantity }];
+      return [...items, { id: cartItemId, product, quantity, selectedWeight }];
     });
     setCartOpen(true);
   };
 
-  const updateQuantity = (productId: string, quantity: number) => {
+  const updateQuantity = (cartItemId: string, quantity: number) => {
     if (quantity <= 0) {
-      removeFromCart(productId);
+      removeFromCart(cartItemId);
       return;
     }
     setCartItems(items =>
       items.map(item =>
-        item.product.id === productId ? { ...item, quantity } : item
+        item.id === cartItemId ? { ...item, quantity } : item
       )
     );
   };
 
-  const removeFromCart = (productId: string) => {
-    setCartItems(items => items.filter(item => item.product.id !== productId));
+  const removeFromCart = (cartItemId: string) => {
+    setCartItems(items => items.filter(item => item.id !== cartItemId));
   };
 
   const cartTotal = useMemo(() => {

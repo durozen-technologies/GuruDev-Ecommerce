@@ -10,6 +10,7 @@ export const products: Product[] = [
     image: '/images/products/achu-muruku-karam.jpg',
     category: 'Snacks',
     spiceLevel: 'Hot',
+    additionalImages: ['/images/products/info-panel.jpg'],
   },
   {
     id: 'sambar-podi',
@@ -21,6 +22,7 @@ export const products: Product[] = [
     category: 'Masalas',
     spiceLevel: 'Medium',
     isBestseller: true,
+    additionalImages: ['/images/products/sambar-podi-label.jpg', '/images/products/info-panel.jpg'],
   },
   {
     id: 'rasam-powder',
@@ -31,6 +33,7 @@ export const products: Product[] = [
     image: '/images/products/rasam-powder.png',
     category: 'Masalas',
     spiceLevel: 'Medium',
+    additionalImages: ['/images/products/rasam-powder-label.jpg', '/images/products/info-panel.jpg'],
   },
   {
     id: 'idly-milakaipodi',
@@ -41,6 +44,7 @@ export const products: Product[] = [
     image: '/images/products/idly-milakaipodi.png',
     category: 'Masalas',
     spiceLevel: 'Hot',
+    additionalImages: ['/images/products/idly-milakaipodi-label.jpg', '/images/products/info-panel.jpg'],
   },
   {
     id: 'puliyodharai-podi',
@@ -51,6 +55,7 @@ export const products: Product[] = [
     image: '/images/products/puliyodharai-podi.png',
     category: 'Masalas',
     spiceLevel: 'Medium',
+    additionalImages: ['/images/products/puliyodharai-podi-label.jpg', '/images/products/info-panel.jpg'],
   },
   {
     id: 'angayapodi',
@@ -61,6 +66,7 @@ export const products: Product[] = [
     image: '/images/products/angayapodi.png',
     category: 'Masalas',
     spiceLevel: 'Mild',
+    additionalImages: ['/images/products/angayapodi-label.jpg', '/images/products/info-panel.jpg'],
   },
   {
     id: 'health-mix',
@@ -71,6 +77,7 @@ export const products: Product[] = [
     image: '/images/products/health-mix.png',
     category: 'Masalas',
     spiceLevel: 'Mild',
+    additionalImages: ['/images/products/info-panel.jpg'],
   },
   {
     id: 'ellu-milakai-podi',
@@ -81,6 +88,7 @@ export const products: Product[] = [
     image: '/images/products/ellu-milakai-podi.png',
     category: 'Masalas',
     spiceLevel: 'Medium',
+    additionalImages: ['/images/products/info-panel.jpg'],
   },
   {
     id: 'karamathu-podi',
@@ -91,6 +99,7 @@ export const products: Product[] = [
     image: '/images/products/karamathu-podi.png',
     category: 'Masalas',
     spiceLevel: 'Hot',
+    additionalImages: ['/images/products/info-panel.jpg'],
   },
   {
     id: 'vathakuzhambu-podi',
@@ -101,6 +110,7 @@ export const products: Product[] = [
     image: '/images/products/vathakuzhambu-podi.png',
     category: 'Masalas',
     spiceLevel: 'Medium',
+    additionalImages: ['/images/products/info-panel.jpg'],
   },
   {
     id: 'murungai-podi',
@@ -111,5 +121,6 @@ export const products: Product[] = [
     image: '/images/products/murungai-podi.png',
     category: 'Masalas',
     spiceLevel: 'Mild',
+    additionalImages: ['/images/products/info-panel.jpg'],
   }
 ];

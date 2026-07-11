@@ -11,7 +11,15 @@ export default function ProductView() {
   const currentProduct = products.find(p => p.id === productId);
   const { addToCart } = useAppContext();
   const [quantity, setQuantity] = useState(1);
+  const [selectedWeight, setSelectedWeight] = useState(currentProduct?.weight || '200g');
   const [activeAccordion, setActiveAccordion] = useState<string | null>('ingredients');
+  const [activeImage, setActiveImage] = useState(currentProduct?.image || '');
+
+  React.useEffect(() => {
+    if (currentProduct) {
+      setActiveImage(currentProduct.image);
+    }
+  }, [currentProduct?.id]);
 
   if (!currentProduct) {
     return (
@@ -46,10 +54,10 @@ export default function ProductView() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="relative glass rounded-2xl overflow-hidden border border-outline-variant/30 group h-[400px] md:h-[500px] flex items-center justify-center p-md"
+            className="relative glass rounded-2xl overflow-hidden border border-outline-variant/30 group h-[400px] md:h-[500px] flex items-center justify-center p-md mb-4"
           >
             <img 
-              src={currentProduct.image} 
+              src={activeImage} 
               alt={currentProduct.name} 
               className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-110 drop-shadow-2xl"
               fetchPriority="high"
@@ -60,6 +68,21 @@ export default function ProductView() {
               </div>
             )}
           </motion.div>
+          
+          {/* Thumbnails */}
+          {currentProduct.additionalImages && currentProduct.additionalImages.length > 0 && (
+            <div className="flex gap-4 overflow-x-auto pb-2 custom-scrollbar">
+              {[currentProduct.image, ...currentProduct.additionalImages].map((img, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setActiveImage(img)}
+                  className={`relative flex-shrink-0 w-20 h-20 md:w-24 md:h-24 rounded-lg overflow-hidden border-2 transition-all ${activeImage === img ? 'border-primary shadow-md' : 'border-outline-variant/30 hover:border-primary/50'}`}
+                >
+                  <img src={img} alt={`Thumbnail ${idx + 1}`} className="w-full h-full object-contain bg-surface-container-lowest p-2" />
+                </button>
+              ))}
+            </div>
+          )}
 
         </div>
 
@@ -88,8 +111,18 @@ export default function ProductView() {
             <div className="mb-md">
               <label className="font-label-md text-on-surface block mb-2">Net Weight</label>
               <div className="flex space-x-3">
-                <button className="px-5 py-2 border-2 border-primary bg-primary text-on-primary rounded-lg font-label-md shadow-md">{currentProduct.weight}</button>
-                <button className="px-5 py-2 border-2 border-outline-variant text-on-surface-variant rounded-lg font-label-md hover:border-primary hover:text-primary transition-colors bg-surface/50">500g</button>
+                <button 
+                  onClick={() => setSelectedWeight(currentProduct.weight)}
+                  className={`px-5 py-2 border-2 rounded-lg font-label-md transition-colors ${selectedWeight === currentProduct.weight ? 'border-primary bg-primary text-on-primary shadow-md' : 'border-outline-variant text-on-surface-variant hover:border-primary hover:text-primary bg-surface/50'}`}
+                >
+                  {currentProduct.weight}
+                </button>
+                <button 
+                  onClick={() => setSelectedWeight('500g')}
+                  className={`px-5 py-2 border-2 rounded-lg font-label-md transition-colors ${selectedWeight === '500g' ? 'border-primary bg-primary text-on-primary shadow-md' : 'border-outline-variant text-on-surface-variant hover:border-primary hover:text-primary bg-surface/50'}`}
+                >
+                  500g
+                </button>
               </div>
             </div>
             
@@ -103,7 +136,7 @@ export default function ProductView() {
                 </div>
               </div>
               <button 
-                onClick={() => addToCart(currentProduct, quantity)}
+                onClick={() => addToCart(currentProduct, quantity, selectedWeight)}
                 className="flex-1 w-full bg-primary text-on-primary py-3.5 rounded-lg font-label-md uppercase tracking-wider hover:bg-primary-container transition-all shadow-lg flex items-center justify-center space-x-2 group hover:-translate-y-0.5"
               >
                 <ShoppingBag className="group-hover:scale-110 transition-transform" size={20} />

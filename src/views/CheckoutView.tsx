@@ -76,14 +76,17 @@ export default function CheckoutView() {
           <h3 className="font-headline-sm text-on-background mb-md pb-sm border-b border-outline-variant/30">Order Summary</h3>
           <div className="space-y-md mb-lg max-h-96 overflow-y-auto custom-scrollbar pr-2">
             {cartItems.map(item => (
-              <div key={item.product.id} className="flex items-center gap-sm">
+              <div key={item.id} className="flex items-center gap-sm">
                 <div className="relative">
                   <img src={item.product.image} className="w-16 h-16 rounded-md object-cover border border-outline-variant/20" alt={item.product.name} />
                   <span className="absolute -top-2 -right-2 bg-surface-variant text-on-surface-variant text-xs w-5 h-5 flex items-center justify-center rounded-full shadow-sm">{item.quantity}</span>
                 </div>
                 <div className="flex-1">
                   <h4 className="font-label-md text-on-surface truncate pr-2">{item.product.name}</h4>
-                  <span className="font-body-md text-on-surface-variant">₹{item.product.price}</span>
+                  <div className="flex items-center justify-between">
+                    <span className="font-caption text-on-surface-variant">{item.selectedWeight}</span>
+                    <span className="font-body-md text-on-surface-variant">₹{item.product.price}</span>
+                  </div>
                 </div>
               </div>
             ))}

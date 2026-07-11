@@ -256,3 +256,41 @@
   - Removed the hardcoded secondary thumbnail image and thumbnail gallery from `ProductView.tsx` as it was no longer needed for single-image products.
   - Reduced excessive padding (`p-2xl` -> `p-xl`) and vertical spacing (`space-y-xl` -> `space-y-lg`) in `CheckoutView.tsx` to tighten the form and order summary layout.
   - Applied `/frontend-ui-engineering` standards to `CheckoutView.tsx` by further tightening the layout: replaced oversized `p-xl` with `p-lg`, removed generic oversized `space-y-lg` for `space-y-md`, and reduced input gaps to `gap-3` and `mb-3` to create a professional, cohesive hierarchy without the generic "AI aesthetic" of excessive whitespace.
+
+### [2026-07-08 16:13:00] Git Operations
+- **User Request**: `"https://github.com/durozen-technologies/GuruDev-Ecommerce.git \n\npush the code"`
+- **Actions Taken**:
+  - Initialized git and added all latest changes.
+  - Committed with message `"UI tweaks, layout spacing fixes, and product image updates"`.
+  - Pushed the code to the main branch of `https://github.com/durozen-technologies/GuruDev-Ecommerce.git`.
+
+### [2026-07-08 17:10:00] UI Tweaks - Footer
+- **User Request**: `"in the fotter there is the diffrence between the mobile and the desktop view correct it"`
+- **Actions Taken**:
+  - Moved the copyright text from the first grid column in `Footer.tsx` down to a dedicated full-width container below the main footer grid. This ensures it stays at the very bottom on both desktop and mobile, instead of awkwardly appearing above the Quick Links on mobile.
+
+### [2026-07-11 09:39:00] Server Operations
+- **User Request**: `"run the feont end code update the session"`
+- **Actions Taken**:
+  - Started the frontend dev server (`npm run dev`) in the background.
+
+### [2026-07-11 09:46:00] Content Updates & Bug Fixes
+- **User Request**: `"Email admin@gurudevimpex.in Not Contact @gurudevimpex.com"`, `"in the product i am not able to select the 500g quantity"`, & `"but in the quantity i selected the 500g"`
+- **Actions Taken**:
+  - Updated the contact email address in `ContactView.tsx` from `contact@gurudevimpex.com` to `admin@gurudevimpex.in`.
+  - Added interactive state to the weight selection buttons in `ProductView.tsx`, allowing users to visually toggle between `200g` and `500g`.
+  - Fixed a bug where adding a product to the cart ignored the selected weight. Updated `CartItem` type in `types.ts` and cart logic in `AppContext.tsx` to handle `selectedWeight` correctly and distinguish variants (e.g. `sambar-podi-500g` vs `sambar-podi-200g`).
+  - Updated `CartDrawer.tsx` and `CheckoutView.tsx` to display the `selectedWeight` instead of the default product weight.
+  - Removed the default weight indicator (e.g. `200g`) from the product cards in `ShopView` (`ProductCard.tsx`) to keep the interface cleaner.
+
+### [2026-07-11 10:13:00] Feature Update - Product Label Gallery
+- **User Request**: `"slice the image and add in the respective product and if the product dose not exists tell me ok"`, `"i mean do replace the existing image add these image in the image section in respective product images ok"`
+- **Actions Taken**:
+  - Wrote and executed a Python script to slice the uploaded collage image (`WhatsApp Image 2026-07-11 at 9.54.54 AM.jpeg`) into 8 individual images.
+  - Saved the product packaging labels for 7 products into `public/images/products/`.
+  - Added an `additionalImages: string[]` optional property to the `Product` interface in `types.ts`.
+  - Updated `data.ts` to assign the newly sliced packaging labels to the 5 existing products (Sambar, Rasam, Puliyodharai, Idly, Anghaya).
+  - Modified `ProductView.tsx` to restore the thumbnail gallery beneath the main image. It now allows users to click and switch between the main product image and the packaging label.
+  - Identified that "Paruppu Podi" and "Coconut Podi" from the labels do not exist in the database and informed the user.
+  - Corrected the image slicing grid coordinates and added a trimming algorithm (`slice_smart.py`) to automatically remove excess white space and prevent the top row's border from showing up at the top of the bottom row's images.
+  - Appended the sliced `info-panel.jpg` to the `additionalImages` array for all 11 products in `data.ts`, making the "Why choose Gurudev Impex?" info card viewable in every product's gallery.

@@ -44,9 +44,6 @@ export default function ProductCard({ product }: { product: Product, key?: React
       <div className="p-md flex flex-col flex-grow border-t border-outline-variant/10">
         <div className="flex justify-between items-start mb-sm">
           <h2 className="font-label-md text-on-surface line-clamp-1">{product.name}</h2>
-          <span className="font-caption text-on-surface-variant bg-surface-container px-2 py-0.5 rounded ml-2 whitespace-nowrap">
-            {product.weight}
-          </span>
         </div>
         <p className="font-caption text-on-surface-variant mb-md flex-grow line-clamp-2">
           {product.description}

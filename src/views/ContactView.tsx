@@ -30,7 +30,7 @@ export default function ContactView() {
             <div className="p-sm bg-primary/10 text-primary rounded-full"><Mail size={24} /></div>
             <div>
               <h4 className="font-label-lg text-on-surface mb-1">Email Us</h4>
-              <a href="mailto:contact@gurudevimpex.com" className="font-body-md text-primary hover:underline">contact@gurudevimpex.com</a>
+              <a href="mailto:admin@gurudevimpex.in" className="font-body-md text-primary hover:underline">admin@gurudevimpex.in</a>
             </div>
           </div>
           <div className="flex items-start gap-md">

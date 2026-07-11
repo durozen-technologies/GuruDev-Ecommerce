@@ -51,7 +51,7 @@ export default function CartDrawer() {
                   <div className="space-y-sm">
                     {cartItems.map((item) => (
                       <div 
-                        key={item.product.id} 
+                        key={item.id} 
                         className="flex items-center gap-sm bg-surface/50 p-sm rounded-xl border border-outline-variant/20 hover:border-primary/40 hover:bg-surface transition-all group"
                       >
                         <img 
@@ -63,14 +63,14 @@ export default function CartDrawer() {
                           <h3 className="font-label-md text-on-surface group-hover:text-primary transition-colors truncate">
                             {item.product.name}
                           </h3>
-                          <p className="font-caption text-on-surface-variant mb-xs">{item.product.weight} Pack</p>
+                          <p className="font-caption text-on-surface-variant mb-xs">{item.selectedWeight} Pack</p>
                           <div className="flex items-center justify-between mt-xs">
                             <span className="font-body-md font-semibold text-on-surface">
                               ₹{item.product.price}
                             </span>
                             <div className="flex items-center bg-surface-container rounded-md border border-outline-variant/30">
                               <button 
-                                onClick={() => updateQuantity(item.product.id, item.quantity - 1)}
+                                onClick={() => updateQuantity(item.id, item.quantity - 1)}
                                 className="px-2 py-1 text-on-surface-variant hover:text-primary transition-colors"
                               >
                                 <Minus size={14} />
@@ -79,7 +79,7 @@ export default function CartDrawer() {
                                 {item.quantity}
                               </span>
                               <button 
-                                onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
+                                onClick={() => updateQuantity(item.id, item.quantity + 1)}
                                 className="px-2 py-1 text-on-surface-variant hover:text-primary transition-colors"
                               >
                                 <Plus size={14} />
